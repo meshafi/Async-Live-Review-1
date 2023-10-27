@@ -1,6 +1,34 @@
 # Async Exercise
 
-## Perform the below steps in the following order:
+## Instructions to setup the project
+
+1. Clone the project
+
+```sh
+git clone https://github.com/pixyj/mb-async-live-review-1 async_live_review
+```
+
+2. cd to the `async_live_review` directory
+
+```sh
+cd async_live_review
+```
+
+3. Install dependencies
+
+```sh
+npm install
+```
+
+4. Start the server
+
+```
+node server.js
+```
+
+---
+
+## In `client.js`, perform the below steps in the following order:
 
 1. Fetch all the users by calling the `/users` API using `node-fetch`
 2. Fetch todos for each user in chunks of 5 users by calling the `/todos` API, i.e,

@@ -15,7 +15,6 @@ const users = range(1, 16).map((i) => ({
   name: `User ${i}`,
   todos: `/todos?user_id=${i}`,
 }));
-console.log(users);
 
 function generateUserTodos(userId) {
   return range(1, 10).map((i) => ({

@@ -4,6 +4,7 @@ async function fetchUsersAndTodos() {
   try {
     const res = await fetch('http://localhost:3000/users');
     const data = await res.json();
+
     const dataArray = data.users;
   
     let index = 0;
@@ -11,9 +12,10 @@ async function fetchUsersAndTodos() {
     const resultArray = [];
    async function fetchDataBatch() {
       while (index < dataArray.length && itemsFetched < 5) {
-        const todos = await fetch(`http://localhost:3000${dataArray[index].todos}`);
-        const todosData = await todos.json();
-        resultArray.push(todosData.todos);
+        const todos = await fetch(`http://localhost:3000${dataArray[index].todos}`)
+        .then(todos => todos.json())
+        .then(todosData => resultArray.push(todosData.todos));
+
         index++;
         itemsFetched++;
   
@@ -27,9 +29,7 @@ async function fetchUsersAndTodos() {
         fetchDataBatch();
       }
     };
-    await fetchDataBatch();
-
-    
+    await fetchDataBatch();    
     return Promise.all(resultArray);
   }
   catch (error) {
